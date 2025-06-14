@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2D18C512-E36F-420A-8CE5-EBBD14D9BD68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "src\SharedKernel\SharedKernel.csproj", "{CF32EABE-0379-4350-A3F6-9C6FF64DDCC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBebe.Domain", "src\HolaBebe.Domain\HolaBebe.Domain.csproj", "{2A889E1E-E9C7-4036-B008-8FFF9C55FE2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBebe.Application", "src\HolaBebe.Application\HolaBebe.Application.csproj", "{3D8CD18D-FFAB-4267-8151-3E2A78EC7F82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBebe.Infrastructure", "src\HolaBebe.Infrastructure\HolaBebe.Infrastructure.csproj", "{DF0DCD96-2475-4213-B7FD-B41DD91348E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBebe.Api", "src\HolaBebe.Api\HolaBebe.Api.csproj", "{147EB25C-E3F0-4960-BE57-2D8AD4A60C1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBebe.AdminMvc", "src\HolaBebe.AdminMvc\HolaBebe.AdminMvc.csproj", "{098C143E-BAAD-44E1-A716-20B13BBF7F04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B8C5170E-7ADB-445E-91B3-18486346307E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBebe.UnitTests", "tests\HolaBebe.UnitTests\HolaBebe.UnitTests.csproj", "{16BBF212-AAFB-452B-A5E3-B9E738E5B3F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolaBebe.IntegrationTests", "tests\HolaBebe.IntegrationTests\HolaBebe.IntegrationTests.csproj", "{205EC022-964A-4064-A912-9C5D5C470EC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF32EABE-0379-4350-A3F6-9C6FF64DDCC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF32EABE-0379-4350-A3F6-9C6FF64DDCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF32EABE-0379-4350-A3F6-9C6FF64DDCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF32EABE-0379-4350-A3F6-9C6FF64DDCC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A889E1E-E9C7-4036-B008-8FFF9C55FE2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A889E1E-E9C7-4036-B008-8FFF9C55FE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A889E1E-E9C7-4036-B008-8FFF9C55FE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A889E1E-E9C7-4036-B008-8FFF9C55FE2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D8CD18D-FFAB-4267-8151-3E2A78EC7F82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D8CD18D-FFAB-4267-8151-3E2A78EC7F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D8CD18D-FFAB-4267-8151-3E2A78EC7F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D8CD18D-FFAB-4267-8151-3E2A78EC7F82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF0DCD96-2475-4213-B7FD-B41DD91348E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF0DCD96-2475-4213-B7FD-B41DD91348E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF0DCD96-2475-4213-B7FD-B41DD91348E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF0DCD96-2475-4213-B7FD-B41DD91348E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{147EB25C-E3F0-4960-BE57-2D8AD4A60C1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{147EB25C-E3F0-4960-BE57-2D8AD4A60C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{147EB25C-E3F0-4960-BE57-2D8AD4A60C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{147EB25C-E3F0-4960-BE57-2D8AD4A60C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{098C143E-BAAD-44E1-A716-20B13BBF7F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{098C143E-BAAD-44E1-A716-20B13BBF7F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{098C143E-BAAD-44E1-A716-20B13BBF7F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{098C143E-BAAD-44E1-A716-20B13BBF7F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16BBF212-AAFB-452B-A5E3-B9E738E5B3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16BBF212-AAFB-452B-A5E3-B9E738E5B3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16BBF212-AAFB-452B-A5E3-B9E738E5B3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16BBF212-AAFB-452B-A5E3-B9E738E5B3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{205EC022-964A-4064-A912-9C5D5C470EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{205EC022-964A-4064-A912-9C5D5C470EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{205EC022-964A-4064-A912-9C5D5C470EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{205EC022-964A-4064-A912-9C5D5C470EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CF32EABE-0379-4350-A3F6-9C6FF64DDCC3} = {2D18C512-E36F-420A-8CE5-EBBD14D9BD68}
+		{2A889E1E-E9C7-4036-B008-8FFF9C55FE2A} = {2D18C512-E36F-420A-8CE5-EBBD14D9BD68}
+		{3D8CD18D-FFAB-4267-8151-3E2A78EC7F82} = {2D18C512-E36F-420A-8CE5-EBBD14D9BD68}
+		{DF0DCD96-2475-4213-B7FD-B41DD91348E7} = {2D18C512-E36F-420A-8CE5-EBBD14D9BD68}
+		{147EB25C-E3F0-4960-BE57-2D8AD4A60C1A} = {2D18C512-E36F-420A-8CE5-EBBD14D9BD68}
+		{098C143E-BAAD-44E1-A716-20B13BBF7F04} = {2D18C512-E36F-420A-8CE5-EBBD14D9BD68}
+		{16BBF212-AAFB-452B-A5E3-B9E738E5B3F7} = {B8C5170E-7ADB-445E-91B3-18486346307E}
+		{205EC022-964A-4064-A912-9C5D5C470EC6} = {B8C5170E-7ADB-445E-91B3-18486346307E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,16 @@
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/bin/Debug/net8.0/HolaBebe.Domain.deps.json
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/bin/Debug/net8.0/HolaBebe.Domain.dll
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/bin/Debug/net8.0/HolaBebe.Domain.pdb
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/bin/Debug/net8.0/SharedKernel.dll
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/bin/Debug/net8.0/SharedKernel.pdb
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.csproj.AssemblyReference.cache
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.AssemblyInfoInputs.cache
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.AssemblyInfo.cs
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.csproj.CoreCompileInputs.cache
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.sourcelink.json
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.csproj.CopyComplete
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.dll
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/refint/HolaBebe.Domain.dll
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/HolaBebe.Domain.pdb
+/Users/milton/develop/HolaBebe/src/HolaBebe.Domain/obj/Debug/net8.0/ref/HolaBebe.Domain.dll
