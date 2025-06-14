@@ -12,6 +12,16 @@ public static class MappingConfig
         TypeAdapterConfig<UserProfileDto, UserProfile>.NewConfig();
 
         TypeAdapterConfig<Pregnancy, PregnancyDto>.NewConfig();
-        TypeAdapterConfig<PregnancyDto, Pregnancy>.NewConfig();
+        TypeAdapterConfig<PregnancyCreateDto, Pregnancy>.NewConfig();
+
+        TypeAdapterConfig<FruitSizeCatalog, FruitSizeDto>.NewConfig();
+
+        TypeAdapterConfig<CalendarEvent, CalendarEventDto>.NewConfig();
+        TypeAdapterConfig<CalendarEventCreateDto, CalendarEvent>.NewConfig();
+
+        TypeAdapterConfig<Article, ArticleListDto>.NewConfig();
+        TypeAdapterConfig<Article, ArticleDto>.NewConfig();
+
+        TypeAdapterConfig<TutorialSlide, TutorialSlideDto>.NewConfig();
     }
 }
