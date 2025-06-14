@@ -9,6 +9,9 @@ public static class MappingConfig
     public static void Register()
     {
         TypeAdapterConfig<UserProfile, UserProfileDto>.NewConfig();
+        TypeAdapterConfig<UserProfileDto, UserProfile>.NewConfig();
+
         TypeAdapterConfig<Pregnancy, PregnancyDto>.NewConfig();
+        TypeAdapterConfig<PregnancyDto, Pregnancy>.NewConfig();
     }
 }
