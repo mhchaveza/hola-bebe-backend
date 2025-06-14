@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.6" />
+    <PackageReference Include="Azure.Cosmos" Version="2.1.1" />
   </ItemGroup>
 
   <PropertyGroup>
