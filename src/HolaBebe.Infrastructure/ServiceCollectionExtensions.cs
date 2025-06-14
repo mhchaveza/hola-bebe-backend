@@ -1,6 +1,6 @@
-using Azure.Cosmos;
 using HolaBebe.Application.Interfaces;
 using HolaBebe.Infrastructure.Data;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

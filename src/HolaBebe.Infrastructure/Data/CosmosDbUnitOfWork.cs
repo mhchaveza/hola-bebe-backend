@@ -1,4 +1,4 @@
-using Azure.Cosmos;
+using Microsoft.Azure.Cosmos;
 using HolaBebe.Application.Interfaces;
 using HolaBebe.Domain.Entities;
 using HolaBebe.Infrastructure.Repositories;

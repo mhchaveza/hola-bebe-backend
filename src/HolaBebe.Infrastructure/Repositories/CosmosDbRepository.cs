@@ -1,8 +1,10 @@
 using System.Linq.Expressions;
 using System.Net;
-using Azure.Cosmos;
+using System.Runtime.CompilerServices;
 using HolaBebe.Application.Interfaces;
 using HolaBebe.Domain.Entities;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
 
 namespace HolaBebe.Infrastructure.Repositories;
 
@@ -20,7 +22,7 @@ public class CosmosDbRepository<TEntity> : IGenericRepository<TEntity>
             var response = await _container.ReadItemAsync<TEntity>(id.ToString(), new PartitionKey(id.ToString()), cancellationToken: ct);
             return response.Resource;
         }
-        catch (CosmosException ex) when (ex.Status == (int)HttpStatusCode.NotFound)
+        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
         {
             return default;
         }
