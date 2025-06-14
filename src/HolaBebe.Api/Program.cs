@@ -45,15 +45,37 @@ api.MapGet("/me/profile", async (HttpContext http, IProfileService svc, IConfigu
     .Produces(StatusCodes.Status404NotFound)
     .WithOpenApi();
 
+api.MapPost("/me/profile", async (UserProfileDto dto, HttpContext http, IProfileService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        try
+        {
+            var profile = await svc.CreateProfileAsync(dto, userId, ct);
+            return Results.Created("/api/v1/me/profile", profile);
+        }
+        catch (InvalidOperationException)
+        {
+            return Results.Conflict();
+        }
+    })
+    .WithName("CreateMyProfile")
+    .WithSummary("Create user profile")
+    .Produces<UserProfileDto>(StatusCodes.Status201Created)
+    .Produces(StatusCodes.Status409Conflict)
+    .Produces(StatusCodes.Status400BadRequest)
+    .WithOpenApi();
+
 api.MapPut("/me/profile", async (UserProfileDto dto, HttpContext http, IProfileService svc, IConfiguration cfg, CancellationToken ct) =>
     {
         var userId = GetUserId(http.User, cfg);
-        var profile = await svc.UpsertProfileAsync(dto, userId, ct);
-        return Results.Ok(profile);
+        var profile = await svc.UpdateProfileAsync(dto, userId, ct);
+        return profile is null ? Results.NotFound() : Results.Ok(profile);
     })
-    .WithName("UpsertMyProfile")
-    .WithSummary("Create or update user profile")
+    .WithName("UpdateMyProfile")
+    .WithSummary("Update user profile")
     .Produces<UserProfileDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .Produces(StatusCodes.Status400BadRequest)
     .WithOpenApi();
 
 api.MapPost("/pregnancies", async (PregnancyDto dto, HttpContext http, IPregnancyService svc, IConfiguration cfg, CancellationToken ct) =>
