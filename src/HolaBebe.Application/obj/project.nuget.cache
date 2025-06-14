@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ist6xY+TYt2sT5OE6EmLM2nxW10YjzGKeYx2hiZmltNYU68IUHqY3gImozVJEwbKOav6G0xxHT/XfwFuKDLoUg==",
+  "success": true,
+  "projectFilePath": "/Users/milton/develop/HolaBebe/src/HolaBebe.Application/HolaBebe.Application.csproj",
+  "expectedPackageFiles": [
+    "/Users/milton/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mapster/7.4.0/mapster.7.4.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mapster.core/1.2.1/mapster.core.1.2.1.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mediatr/11.0.0/mediatr.11.0.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

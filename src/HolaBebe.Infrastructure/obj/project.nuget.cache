@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "lUFDFtYBq9kLen5lRao8QQxLs/Ipjk0w5LjHlNgX50XwPb5fg34BIPOJQlzaGq7mo3mkUCMlp1zgCnFMHTVItQ==",
+  "success": true,
+  "projectFilePath": "/Users/milton/develop/HolaBebe/src/HolaBebe.Infrastructure/HolaBebe.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "/Users/milton/.nuget/packages/fluentvalidation/12.0.0/fluentvalidation.12.0.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mapster/7.4.0/mapster.7.4.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mapster.core/1.2.1/mapster.core.1.2.1.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mediatr/11.0.0/mediatr.11.0.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
+    "/Users/milton/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/11.1.0/mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "/Users/milton/.nuget/packages/microsoft.extensions.configuration.abstractions/9.0.6/microsoft.extensions.configuration.abstractions.9.0.6.nupkg.sha512",
+    "/Users/milton/.nuget/packages/microsoft.extensions.configuration.binder/9.0.6/microsoft.extensions.configuration.binder.9.0.6.nupkg.sha512",
+    "/Users/milton/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.6/microsoft.extensions.dependencyinjection.abstractions.9.0.6.nupkg.sha512",
+    "/Users/milton/.nuget/packages/microsoft.extensions.options/9.0.6/microsoft.extensions.options.9.0.6.nupkg.sha512",
+    "/Users/milton/.nuget/packages/microsoft.extensions.options.configurationextensions/9.0.6/microsoft.extensions.options.configurationextensions.9.0.6.nupkg.sha512",
+    "/Users/milton/.nuget/packages/microsoft.extensions.primitives/9.0.6/microsoft.extensions.primitives.9.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}
