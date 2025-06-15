@@ -1,0 +1,325 @@
+openapi: 3.0.1
+info:
+  title: Hola Bebe API
+  version: '1.0'
+paths:
+  /pregnancies:
+    post:
+      summary: Create pregnancy record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PregnancyCreateDto'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PregnancyDto'
+        '409':
+          description: Conflict
+  /pregnancies/current:
+    get:
+      summary: Get current pregnancy
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PregnancyDto'
+        '404':
+          description: Not Found
+  /pregnancies/{id}:
+    patch:
+      summary: Update pregnancy record
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PregnancyUpdateDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PregnancyDto'
+        '404':
+          description: Not Found
+  /pregnancies/{id}/fruit-size:
+    get:
+      summary: Get baby size as fruit
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FruitSizeDto'
+        '404':
+          description: Not Found
+  /pregnancies/{id}/week/{n}:
+    get:
+      summary: Get weekly content summary
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: n
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeeklySummaryDto'
+        '404':
+          description: Not Found
+  /calendar-events:
+    get:
+      summary: List calendar events
+      parameters:
+        - in: query
+          name: startDateFrom
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: startDateTo
+          schema:
+            type: string
+            format: date-time
+        - in: query
+          name: type
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalendarEventDto'
+    post:
+      summary: Create calendar event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarEventCreateDto'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarEventDto'
+  /calendar-events/{id}:
+    get:
+      summary: Get calendar event
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarEventDto'
+        '404':
+          description: Not Found
+    patch:
+      summary: Update calendar event
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarEventUpdateDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarEventDto'
+        '404':
+          description: Not Found
+    delete:
+      summary: Delete calendar event
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+components:
+  schemas:
+    PregnancyCreateDto:
+      type: object
+      properties:
+        gestationalAgeDays:
+          type: integer
+        conceptionDate:
+          type: string
+          format: date-time
+        dueDate:
+          type: string
+          format: date-time
+        lastMenstruationDate:
+          type: string
+          format: date-time
+    PregnancyUpdateDto:
+      type: object
+      properties:
+        gestationalAgeDays:
+          type: integer
+        conceptionDate:
+          type: string
+          format: date-time
+        dueDate:
+          type: string
+          format: date-time
+        lastMenstruationDate:
+          type: string
+          format: date-time
+        current:
+          type: boolean
+    PregnancyDto:
+      type: object
+      properties:
+        id:
+          type: string
+        weekNumber:
+          type: integer
+        dueDate:
+          type: string
+          format: date-time
+        current:
+          type: boolean
+    FruitSizeDto:
+      type: object
+      properties:
+        week:
+          type: integer
+        fruitName:
+          type: string
+        lengthMm:
+          type: number
+        weightG:
+          type: number
+        imageUrl:
+          type: string
+    WeeklySummaryDto:
+      type: object
+      properties:
+        week:
+          type: integer
+        baby:
+          type: string
+        mom:
+          type: string
+        nutrition:
+          type: string
+        tips:
+          type: string
+        fruitSize:
+          $ref: '#/components/schemas/FruitSizeDto'
+    CalendarEventCreateDto:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        type:
+          type: integer
+        color:
+          type: string
+        pregnancyId:
+          type: string
+        location:
+          type: string
+    CalendarEventUpdateDto:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        type:
+          type: integer
+        color:
+          type: string
+        pregnancyId:
+          type: string
+        location:
+          type: string
+    CalendarEventDto:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        startDateTime:
+          type: string
+          format: date-time
+        type:
+          type: integer
+        color:
+          type: string
+
