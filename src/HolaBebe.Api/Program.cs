@@ -5,6 +5,8 @@ using HolaBebe.Application.Services;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using HolaBebe.Infrastructure;
+using HolaBebe.Domain;
+using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -142,6 +144,68 @@ api.MapGet("/pregnancies/{id}/week/{n:int}", async (Guid id, int n, HttpContext 
     .WithName("GetWeeklySummary")
     .WithSummary("Get weekly content summary")
     .Produces<WeeklySummaryDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapGet("/calendar-events", async (DateTime? startDateFrom, DateTime? startDateTo, CalendarType? type, HttpContext http, ICalendarService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var list = new List<CalendarEventDto>();
+        await foreach (var ev in svc.GetEventsAsync(userId, startDateFrom, startDateTo, type, ct))
+        {
+            list.Add(ev);
+        }
+        return Results.Ok(list);
+    })
+    .WithName("ListCalendarEvents")
+    .WithSummary("List calendar events")
+    .Produces<IList<CalendarEventDto>>(StatusCodes.Status200OK)
+    .WithOpenApi();
+
+api.MapPost("/calendar-events", async (CalendarEventCreateDto dto, HttpContext http, ICalendarService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var ev = await svc.CreateEventAsync(dto, userId, ct);
+        return Results.Created($"/api/v1/calendar-events/{ev.Id}", ev);
+    })
+    .WithName("CreateCalendarEvent")
+    .WithSummary("Create calendar event")
+    .Produces<CalendarEventDto>(StatusCodes.Status201Created)
+    .WithOpenApi();
+
+api.MapGet("/calendar-events/{id}", async (Guid id, HttpContext http, ICalendarService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var ev = await svc.GetEventAsync(id, userId, ct);
+        return ev is null ? Results.NotFound() : Results.Ok(ev);
+    })
+    .WithName("GetCalendarEvent")
+    .WithSummary("Get calendar event")
+    .Produces<CalendarEventDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapPatch("/calendar-events/{id}", async (Guid id, CalendarEventUpdateDto dto, HttpContext http, ICalendarService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var ev = await svc.UpdateEventAsync(id, dto, userId, ct);
+        return ev is null ? Results.NotFound() : Results.Ok(ev);
+    })
+    .WithName("UpdateCalendarEvent")
+    .WithSummary("Update calendar event")
+    .Produces<CalendarEventDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapDelete("/calendar-events/{id}", async (Guid id, HttpContext http, ICalendarService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var ok = await svc.DeleteEventAsync(id, userId, ct);
+        return ok ? Results.NoContent() : Results.NotFound();
+    })
+    .WithName("DeleteCalendarEvent")
+    .WithSummary("Delete calendar event")
+    .Produces(StatusCodes.Status204NoContent)
     .Produces(StatusCodes.Status404NotFound)
     .WithOpenApi();
 
