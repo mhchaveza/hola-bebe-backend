@@ -78,15 +78,23 @@ api.MapPut("/me/profile", async (UserProfileDto dto, HttpContext http, IProfileS
     .Produces(StatusCodes.Status400BadRequest)
     .WithOpenApi();
 
-api.MapPost("/pregnancies", async (PregnancyDto dto, HttpContext http, IPregnancyService svc, IConfiguration cfg, CancellationToken ct) =>
+api.MapPost("/pregnancies", async (PregnancyCreateDto dto, HttpContext http, IPregnancyService svc, IConfiguration cfg, CancellationToken ct) =>
     {
         var userId = GetUserId(http.User, cfg);
-        var preg = await svc.CreatePregnancyAsync(dto, userId, ct);
-        return Results.Created($"/api/v1/pregnancies/{preg.Id}", preg);
+        try
+        {
+            var preg = await svc.CreatePregnancyAsync(dto, userId, ct);
+            return Results.Created($"/api/v1/pregnancies/{preg.Id}", preg);
+        }
+        catch (InvalidOperationException)
+        {
+            return Results.Conflict();
+        }
     })
     .WithName("CreatePregnancy")
     .WithSummary("Create pregnancy record")
     .Produces<PregnancyDto>(StatusCodes.Status201Created)
+    .Produces(StatusCodes.Status409Conflict)
     .WithOpenApi();
 
 api.MapGet("/pregnancies/current", async (HttpContext http, IPregnancyService svc, IConfiguration cfg, CancellationToken ct) =>
@@ -98,6 +106,42 @@ api.MapGet("/pregnancies/current", async (HttpContext http, IPregnancyService sv
     .WithName("GetCurrentPregnancy")
     .WithSummary("Get current pregnancy")
     .Produces<PregnancyDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapPatch("/pregnancies/{id}", async (Guid id, PregnancyUpdateDto dto, HttpContext http, IPregnancyService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var preg = await svc.UpdatePregnancyAsync(id, dto, userId, ct);
+        return preg is null ? Results.NotFound() : Results.Ok(preg);
+    })
+    .WithName("UpdatePregnancy")
+    .WithSummary("Update pregnancy record")
+    .Produces<PregnancyDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapGet("/pregnancies/{id}/fruit-size", async (Guid id, HttpContext http, IPregnancyService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var fruit = await svc.GetFruitSizeAsync(id, userId, ct);
+        return fruit is null ? Results.NotFound() : Results.Ok(fruit);
+    })
+    .WithName("GetFruitSize")
+    .WithSummary("Get baby size as fruit")
+    .Produces<FruitSizeDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapGet("/pregnancies/{id}/week/{n:int}", async (Guid id, int n, HttpContext http, IPregnancyService svc, IConfiguration cfg, CancellationToken ct) =>
+    {
+        var userId = GetUserId(http.User, cfg);
+        var summary = await svc.GetWeeklySummaryAsync(id, n, userId, ct);
+        return summary is null ? Results.NotFound() : Results.Ok(summary);
+    })
+    .WithName("GetWeeklySummary")
+    .WithSummary("Get weekly content summary")
+    .Produces<WeeklySummaryDto>(StatusCodes.Status200OK)
     .Produces(StatusCodes.Status404NotFound)
     .WithOpenApi();
 
