@@ -210,6 +210,52 @@ api.MapDelete("/calendar-events/{id}", async (Guid id, HttpContext http, ICalend
     .Produces(StatusCodes.Status404NotFound)
     .WithOpenApi();
 
+api.MapGet("/weekly-content/{week:int}/{category:int}", async (int week, int category, IWeeklyContentService svc, CancellationToken ct) =>
+    {
+        var content = await svc.GetContentAsync(week, (WeeklyCategory)category, ct);
+        return content is null ? Results.NotFound() : Results.Ok(content);
+    })
+    .WithName("GetWeeklyContent")
+    .WithSummary("Get weekly content by category")
+    .Produces<WeeklyContentDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapGet("/articles", async (int? page, int? pageSize, IArticleService svc, CancellationToken ct) =>
+    {
+        var result = await svc.GetArticlesAsync(page ?? 1, pageSize ?? 10, ct);
+        return Results.Ok(result);
+    })
+    .WithName("ListArticles")
+    .WithSummary("List articles")
+    .Produces<PagedResultDto<ArticleListDto>>(StatusCodes.Status200OK)
+    .WithOpenApi();
+
+api.MapGet("/articles/{slug}", async (string slug, IArticleService svc, CancellationToken ct) =>
+    {
+        var article = await svc.GetArticleAsync(slug, ct);
+        return article is null ? Results.NotFound() : Results.Ok(article);
+    })
+    .WithName("GetArticle")
+    .WithSummary("Get article by slug")
+    .Produces<ArticleDto>(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status404NotFound)
+    .WithOpenApi();
+
+api.MapGet("/tutorial-slides", async (ITutorialService svc, CancellationToken ct) =>
+    {
+        var list = new List<TutorialSlideDto>();
+        await foreach (var slide in svc.GetSlidesAsync(ct))
+        {
+            list.Add(slide);
+        }
+        return Results.Ok(list);
+    })
+    .WithName("ListTutorialSlides")
+    .WithSummary("List tutorial slides")
+    .Produces<IList<TutorialSlideDto>>(StatusCodes.Status200OK)
+    .WithOpenApi();
+
 static Guid GetUserId(ClaimsPrincipal user, IConfiguration cfg)
 {
     var claim = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
