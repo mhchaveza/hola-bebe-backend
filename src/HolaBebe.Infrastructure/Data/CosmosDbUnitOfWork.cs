@@ -16,6 +16,8 @@ public sealed class CosmosDbUnitOfWork : IUnitOfWork, IDisposable
     public IGenericRepository<FruitSizeCatalog> FruitSizes { get; }
     public IGenericRepository<WeeklyContent> WeeklyContents { get; }
     public IGenericRepository<CalendarEvent> CalendarEvents { get; }
+    public IGenericRepository<Article> Articles { get; }
+    public IGenericRepository<TutorialSlide> TutorialSlides { get; }
 
     public CosmosDbUnitOfWork(CosmosClient client, IOptions<CosmosSettings> options)
     {
@@ -26,6 +28,8 @@ public sealed class CosmosDbUnitOfWork : IUnitOfWork, IDisposable
         FruitSizes = new CosmosDbRepository<FruitSizeCatalog>(_database.CreateContainerIfNotExistsAsync("FruitSizes", "/id").GetAwaiter().GetResult());
         WeeklyContents = new CosmosDbRepository<WeeklyContent>(_database.CreateContainerIfNotExistsAsync("WeeklyContents", "/id").GetAwaiter().GetResult());
         CalendarEvents = new CosmosDbRepository<CalendarEvent>(_database.CreateContainerIfNotExistsAsync("CalendarEvents", "/id").GetAwaiter().GetResult());
+        Articles = new CosmosDbRepository<Article>(_database.CreateContainerIfNotExistsAsync("Articles", "/id").GetAwaiter().GetResult());
+        TutorialSlides = new CosmosDbRepository<TutorialSlide>(_database.CreateContainerIfNotExistsAsync("TutorialSlides", "/id").GetAwaiter().GetResult());
     }
 
     public Task<int> SaveChangesAsync(CancellationToken ct) => Task.FromResult(0);

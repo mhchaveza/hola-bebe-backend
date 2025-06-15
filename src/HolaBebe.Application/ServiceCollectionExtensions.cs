@@ -10,6 +10,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IProfileService, ProfileService>();
         services.AddScoped<IPregnancyService, PregnancyService>();
         services.AddScoped<ICalendarService, CalendarService>();
+        services.AddScoped<IWeeklyContentService, WeeklyContentService>();
+        services.AddScoped<IArticleService, ArticleService>();
+        services.AddScoped<ITutorialService, TutorialService>();
         return services;
     }
 }

@@ -23,5 +23,6 @@ public static class MappingConfig
         TypeAdapterConfig<Article, ArticleDto>.NewConfig();
 
         TypeAdapterConfig<TutorialSlide, TutorialSlideDto>.NewConfig();
+        TypeAdapterConfig<WeeklyContent, WeeklyContentDto>.NewConfig();
     }
 }

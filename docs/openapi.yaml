@@ -194,6 +194,78 @@ paths:
           description: No Content
         '404':
           description: Not Found
+  /weekly-content/{week}/{category}:
+    get:
+      summary: Get weekly content by category
+      parameters:
+        - in: path
+          name: week
+          schema:
+            type: integer
+          required: true
+        - in: path
+          name: category
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeeklyContentDto'
+        '404':
+          description: Not Found
+  /articles:
+    get:
+      summary: List articles
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedArticleListDto'
+  /articles/{slug}:
+    get:
+      summary: Get article by slug
+      parameters:
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleDto'
+        '404':
+          description: Not Found
+  /tutorial-slides:
+    get:
+      summary: List tutorial slides
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TutorialSlideDto'
 components:
   schemas:
     PregnancyCreateDto:
@@ -308,18 +380,81 @@ components:
           type: string
         location:
           type: string
-    CalendarEventDto:
-      type: object
-      properties:
-        id:
+  CalendarEventDto:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      startDateTime:
+        type: string
+        format: date-time
+      type:
+        type: integer
+      color:
+        type: string
+  WeeklyContentDto:
+    type: object
+    properties:
+      title:
+        type: string
+      htmlContent:
+        type: string
+      videoUrl:
+        type: string
+  ArticleListDto:
+    type: object
+    properties:
+      slug:
+        type: string
+      title:
+        type: string
+      excerpt:
+        type: string
+      coverImageUrl:
+        type: string
+      publishedAt:
+        type: string
+        format: date-time
+  ArticleDto:
+    type: object
+    properties:
+      title:
+        type: string
+      htmlContent:
+        type: string
+      tags:
+        type: array
+        items:
           type: string
-        title:
-          type: string
-        startDateTime:
-          type: string
-          format: date-time
-        type:
-          type: integer
-        color:
-          type: string
+      author:
+        type: string
+      publishedAt:
+        type: string
+        format: date-time
+  PagedArticleListDto:
+    type: object
+    properties:
+      items:
+        type: array
+        items:
+          $ref: '#/components/schemas/ArticleListDto'
+      total:
+        type: integer
+      page:
+        type: integer
+      pageSize:
+        type: integer
+  TutorialSlideDto:
+    type: object
+    properties:
+      order:
+        type: integer
+      title:
+        type: string
+      subtitle:
+        type: string
+      imageUrl:
+        type: string
 
