@@ -7,6 +7,7 @@ using System.Security.Claims;
 using HolaBebe.Infrastructure;
 using HolaBebe.Domain;
 using System.Collections.Generic;
+using HolaBebe.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
