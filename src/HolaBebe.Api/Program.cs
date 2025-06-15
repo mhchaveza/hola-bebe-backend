@@ -5,6 +5,7 @@ using HolaBebe.Application.Services;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using HolaBebe.Infrastructure;
+using HolaBebe.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
